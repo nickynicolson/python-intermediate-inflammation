@@ -2,6 +2,16 @@
 
 from matplotlib import pyplot as plt
 import numpy as np
+from inflammation import serializers
+
+def display_patient_record(patient, format='text'):
+    """Display data for a single patient."""
+    if format == 'json':
+        print(serializers.PatientJSONSerializer.serialize([patient]))
+    else:
+        print(patient.name)
+        for obs in patient.observations:
+            print(obs.day, obs.value)
 
 
 def visualize(data_dict):
